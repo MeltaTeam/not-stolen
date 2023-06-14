@@ -2,7 +2,7 @@
 /** @jsx createElement */
 import { PureComponent } from '../../../react/renderer';
 import { Popup } from '../popup/popup.common';
-import { INotificationOptions, MbscAlertOptions, MbscConfirmOptions, MbscPromptOptions, MbscSnackbarOptions, MbscToastOptions } from './notifications';
+import { INotificationOptions, MbscAlertOptions, MbscConfirmOptions, MbscPromptOptions, MbscSnackbarOptions, MbscToastOptions } from './notifications.types';
 declare class NotificationBase<T extends INotificationOptions<R>, R> extends PureComponent<T> {
     protected _popup?: Popup;
     open: () => void;

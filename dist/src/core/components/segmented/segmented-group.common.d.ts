@@ -1,4 +1,5 @@
-import { MbscSegmentedGroupOptions, SegmentedGroupBase } from './segmented-group';
+import { SegmentedGroupBase } from './segmented-group';
+import { MbscSegmentedGroupOptions } from './segmented.types.public';
 export declare function template(s: MbscSegmentedGroupOptions, inst: SegmentedGroupBase, content: any): any;
 /**
  * The SegmentedGroup.

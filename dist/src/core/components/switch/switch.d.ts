@@ -1,16 +1,5 @@
-import { BaseComponent, IBaseProps } from '../../base';
-export interface MbscSwitchOptions extends IBaseProps {
-    checked?: boolean;
-    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light';
-    defaultChecked?: boolean;
-    description?: string;
-    disabled?: boolean;
-    onChange?: any;
-    inputStyle?: 'underline' | 'box' | 'outline';
-    label?: string;
-    modelValue?: boolean;
-    position?: 'start' | 'end';
-}
+import { BaseComponent } from '../../base';
+import { MbscSwitchOptions } from './switch.types.public';
 /** @hidden */
 export interface MbscSwitchState {
     checked?: boolean;

@@ -1,46 +1,6 @@
 import { PopupBase } from '../popup/popup';
 import { MbscPopupOptions } from '../popup/popup.types.public';
-export interface INotificationOptions<T> {
-    animation?: 'pop' | 'slide-down' | 'slide-up' | boolean;
-    cssClass?: string;
-    message?: string;
-    display?: 'bottom' | 'center' | 'top';
-    theme?: string;
-    context?: string;
-    themeVariant?: 'auto' | 'light' | 'dark';
-    isOpen?: boolean;
-    callback?: (result: T) => void;
-    onClose?: (result: T) => void;
-}
-export interface MbscToastOptions extends INotificationOptions<undefined> {
-    color?: string;
-    duration?: boolean | number;
-}
-export interface MbscSnackbarOptions extends MbscToastOptions {
-    button?: {
-        icon?: string;
-        text?: string;
-        action?: () => void;
-    };
-}
-export interface MbscAlertOptions extends INotificationOptions<undefined> {
-    title?: string;
-    okText?: string;
-}
-export interface MbscConfirmOptions extends INotificationOptions<boolean> {
-    title?: string;
-    okText?: string;
-    cancelText?: string;
-}
-export interface MbscPromptOptions extends INotificationOptions<string | null> {
-    title?: string;
-    okText?: string;
-    cancelText?: string;
-    placeholder?: string;
-    label?: string;
-    value?: string;
-    inputType?: string;
-}
+import { INotificationOptions, MbscAlertOptions, MbscConfirmOptions, MbscPromptOptions, MbscSnackbarOptions, MbscToastOptions } from './notifications.types';
 /**
  * Returns the options for the toast notification popup.
  * @param options Toast options.

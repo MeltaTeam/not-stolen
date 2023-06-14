@@ -1,17 +1,5 @@
 import { BaseComponent } from '../../base';
-import { MbscButtonOptions } from '../button/button';
-import { MbscRadioGroupOptions } from './radio-group';
-export interface MbscRadioOptions extends MbscButtonOptions {
-    checked?: boolean;
-    defaultChecked?: boolean;
-    description?: string;
-    label?: string;
-    modelValue?: any;
-    name?: string;
-    value?: any;
-    onChange?: any;
-    position?: 'start' | 'end';
-}
+import { MbscRadioGroupOptions, MbscRadioOptions } from './radio.types.public';
 /** @hidden */
 export interface MbscRadioState {
     checked?: boolean;

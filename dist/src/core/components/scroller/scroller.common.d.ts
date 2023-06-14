@@ -1,6 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx createElement */
-import { MbscScrollerOptions, ScrollerBase } from '../../../react/../core/components/scroller/scroller';
+import { ScrollerBase } from '../../../react/../core/components/scroller/scroller';
+import { MbscScrollerOptions } from '../../../react/../core/components/scroller/scroller.types';
 import './scroller.scss';
 export declare function template(s: MbscScrollerOptions, inst: ScrollerBase): any;
 /**

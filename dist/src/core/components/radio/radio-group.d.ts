@@ -1,12 +1,5 @@
-import { BaseComponent, IBaseProps } from '../../base';
-export interface MbscRadioGroupOptions extends IBaseProps {
-    color?: string;
-    disabled?: boolean;
-    name?: string;
-    value?: any;
-    position?: 'start' | 'end';
-    onChange?: any;
-}
+import { BaseComponent } from '../../base';
+import { MbscRadioGroupOptions } from './radio.types.public';
 /** @hidden */
 export declare class RadioGroupBase extends BaseComponent<MbscRadioGroupOptions, any> {
     static defaults: MbscRadioGroupOptions;
@@ -15,5 +8,6 @@ export declare class RadioGroupBase extends BaseComponent<MbscRadioGroupOptions,
     _name: string;
     private _id;
     _onChange: (ev: any, val: any) => void;
+    _change(value: any): void;
     protected _render(s: MbscRadioGroupOptions): void;
 }

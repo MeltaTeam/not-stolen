@@ -67,38 +67,73 @@ export declare class PickerBase<PropType extends IPickerProps, StateType extends
     private _observer;
     private _tempValue;
     private _resetEl?;
+    /**
+     * Opens the component.
+     */
     open(): void;
+    /**
+     * Closes the component.
+     */
     close(): void;
+    /** @hidden */
     set(): void;
+    /**
+     * Recalculates the position of the component (if not inline).
+     */
     position(): void;
+    /** Returns a boolean indicating whether the component is visible or not. */
     isVisible(): boolean;
+    /** @hidden */
     getVal(): any;
+    /** @hidden */
     setVal(value: any): void;
-    /** Returns the temporary value selected on the picker. */
+    /**
+     * Returns the temporary value that's selected on the picker.
+     *
+     * Depending on how the picker is [displayed](#opt-display), the selection might be in a temporary state
+     * that hasn't been set yet. This temporary value can be acquired calling the getTempVal method on the
+     * picker instance.
+     * @returns The return value type depends on the [returnFormat](#opt-returnFormat) and the
+     * [select](#opt-select) option.
+     */
     getTempVal(): any;
     /**
      * Sets the Picker temporary value. This temp value is shown on the picker until the selection.
-     * In the case of inline mode or when the touchUi setting is false the value will be set to the Model as well,
+     * In the case of inline mode or when the [touchUi](#opt-touchUi) option is false the value will be set to the Model as well,
      * since in these cases there's no temporary value.
      * @param value The value to set to the datepicker as temporary value
      */
     setTempVal(value: any): void;
+    /** @hidden */
     _onInputChange: (ev: any, val?: any) => void;
+    /** @hidden */
     _onResize: (args: any) => void;
+    /** @hidden */
     _onWrapperResize: () => void;
+    /** @hidden */
     _onPopupClose: (args: any) => void;
+    /** @hidden */
     _onPopupClosed: (args: any) => void;
+    /** @hidden */
     _onPopupKey: (args: any) => void;
+    /** @hidden */
     _onPopupOpen: (args: any) => void;
+    /** @hidden */
     _onButtonClick: ({ domEvent, button }: {
         domEvent: any;
         button: IPopupButton;
     }) => void;
+    /** @hidden */
     _setInput: (inp: any) => void;
+    /** @hidden */
     _setPopup: (popup: any) => void;
+    /** @hidden */
     _setWrapper: (wrapper: any) => void;
+    /** @hidden */
     _shouldValidate(s: IPickerProps, prevS: IPickerProps): boolean;
+    /** @hidden */
     _valueEquals(v1: any, v2: any): boolean;
+    /** @hidden */
     _change(value: any): void;
     protected _render(s: IPickerProps, state: IPickerState): void;
     protected _updated(): void;
@@ -113,7 +148,7 @@ export declare class PickerBase<PropType extends IPickerProps, StateType extends
     protected _setOrUpdate(preventChange?: boolean): void;
     /**
      * Returns a copy of the value representation.
-     * Is used to copy the temporary value to the final value and vica versa.
+     * Is used to copy the temporary value to the final value and vice versa.
      * @param value The value to copy.
      */
     protected _copy(value: any): any;

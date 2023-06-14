@@ -1,6 +1,4 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-import { MbscAlertOptions, MbscConfirmOptions, MbscPromptOptions, MbscSnackbarOptions, MbscToastOptions } from '../../../react/../core/components/notifications/notifications';
+import { MbscAlertOptions, MbscConfirmOptions, MbscPromptOptions, MbscSnackbarOptions, MbscToastOptions } from '../../../react/../core/components/notifications/notifications.types';
 import './notifications.scss';
 /**
  * Returns content for alert and confirm.

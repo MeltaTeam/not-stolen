@@ -1,5 +1,5 @@
-import { MbscRadioOptions, MbscRadioState, RadioBase } from './radio';
-import { MbscRadioGroupOptions } from './radio-group';
+import { MbscRadioState, RadioBase } from './radio';
+import { MbscRadioGroupOptions, MbscRadioOptions } from './radio.types.public';
 import '../../base.scss';
 import '../../shared/form-controls/form-controls.scss';
 import './radio.scss';

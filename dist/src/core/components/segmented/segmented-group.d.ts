@@ -1,13 +1,5 @@
-import { BaseComponent, IBaseProps } from '../../base';
-export interface MbscSegmentedGroupOptions extends IBaseProps {
-    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light';
-    drag?: boolean;
-    disabled?: boolean;
-    name?: string;
-    select?: 'single' | 'multiple';
-    value?: any;
-    onChange?: any;
-}
+import { BaseComponent } from '../../base';
+import { MbscSegmentedGroupOptions } from './segmented.types.public';
 /** @hidden */
 export declare class SegmentedGroupBase extends BaseComponent<MbscSegmentedGroupOptions, any> {
     static defaults: MbscSegmentedGroupOptions;
@@ -18,6 +10,7 @@ export declare class SegmentedGroupBase extends BaseComponent<MbscSegmentedGroup
     private _unlisten?;
     private _id;
     _onChange: (ev: any, val: any) => void;
+    _change(value: any): void;
     protected _setupDrag(): void;
     protected _cleanupDrag(): void;
     protected _render(s: MbscSegmentedGroupOptions): void;

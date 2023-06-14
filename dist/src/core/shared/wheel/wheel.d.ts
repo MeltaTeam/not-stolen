@@ -1,6 +1,6 @@
 import { BaseComponent, IBaseProps } from '../../base';
 import { MbscPopupDisplay } from '../../components/popup/popup.types.public';
-import { IWheelDataItem, MbscScrollerWheel } from '../../components/scroller/scroller';
+import { IWheelDataItem, MbscScrollerWheel } from '../../components/scroller/scroller.types';
 /** @hidden */
 export interface IWheelIndexChangeArgs {
     click?: boolean;

@@ -50,26 +50,47 @@ export declare function processButtons(inst: any, buttons?: Array<IPopupButton |
 export declare class PopupBase extends BaseComponent<MbscPopupOptions, MbscPopupState> {
     /** @hidden */
     static defaults: MbscPopupOptions;
+    /** @hidden */
     _active: HTMLElement;
+    /** @hidden */
     _animation?: string;
+    /** @hidden */
     _buttons?: IPopupButton[];
+    /** @hidden */
     _ctx?: any;
+    /** @hidden */
     _content: HTMLElement;
+    /** @hidden */
     _flexButtons?: boolean;
+    /** @hidden */
     _hasContext?: boolean;
+    /** @hidden */
     _headerText?: any;
+    /** @hidden */
     _isClosing?: boolean;
+    /** @hidden */
     _isModal?: boolean;
+    /** @hidden */
     _isOpening?: boolean;
+    /** @hidden */
     _isOpen?: boolean;
+    /** @hidden */
     _isVisible?: boolean;
+    /** @hidden */
     _limitator?: HTMLElement;
+    /** @hidden */
     _limits?: any;
+    /** @hidden */
     _popup: HTMLElement;
+    /** @hidden */
     _prevFocus?: HTMLElement;
+    /** @hidden */
     _prevModal?: PopupBase;
+    /** @hidden */
     _round?: boolean;
+    /** @hidden */
     _style?: any;
+    /** @hidden */
     _wrapper: HTMLElement;
     protected _justClosed?: boolean;
     protected _justOpened?: boolean;
@@ -88,39 +109,63 @@ export declare class PopupBase extends BaseComponent<MbscPopupOptions, MbscPopup
     private _vpWidth;
     private _vpHeight;
     private _win?;
+    /** @hidden */
     _setActive: (el: any) => void;
+    /** @hidden */
     _setContent: (el: any) => void;
+    /** @hidden */
     _setLimitator: (el: any) => void;
+    /** @hidden */
     _setPopup: (el: any) => void;
+    /** @hidden */
     _setWrapper: (el: any) => void;
+    /** @hidden */
     _onOverlayClick: () => void;
+    /** @hidden */
     _onDocClick: (ev: any) => void;
+    /** @hidden */
     _onMouseDown: (ev: any) => void;
+    /** @hidden */
     _onMouseUp: (ev: any) => void;
+    /** @hidden */
     _onPopupClick: () => void;
+    /** @hidden */
     _onAnimationEnd: (ev: any) => void;
+    /** @hidden */
     _onButtonClick: ({ domEvent, button }: {
         domEvent: any;
         button: MbscPopupButton;
     }) => void;
+    /** @hidden */
     _onFocus: (ev: any) => void;
+    /** @hidden */
     _onKeyDown: (ev: any) => void;
+    /** @hidden */
     _onContentScroll: (ev: any) => void;
+    /** @hidden */
     _onScroll: (ev: any) => void;
+    /** @hidden */
     _onWndKeyDown: (ev: any) => void;
+    /** @hidden */
     _onResize: () => void;
     /**
-     * Open
+     * @hidden
+     * Opens the component.
      */
     open(): void;
     /**
-     * Close
+     * @hidden
+     * Closes the component.
      */
     close(): void;
     /**
-     * Is open?
+     * @hidden
+     * Returns if the component is opened or not.
      */
     isVisible(): boolean;
+    /**
+     * Recalculates the position of the component.
+     */
     position(): void;
     protected _render(s: MbscPopupOptions, state: MbscPopupState): void;
     protected _updated(): void;

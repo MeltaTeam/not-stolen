@@ -51,7 +51,7 @@ export interface MbscCalendarLabel extends ICalendarData {
 export interface MbscCalendarEvent extends MbscCalendarLabel {
     /** Specifies if the event is all day or not. */
     allDay?: boolean;
-    /** A unique id for the event. If not specifed, the event will get a generated id. */
+    /** A unique id for the event. If not specified, the event will get a generated id. */
     id?: string | number;
     /** Resource or resources of the event. */
     resource?: number | string | Array<number | string>;

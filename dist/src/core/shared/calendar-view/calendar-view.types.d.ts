@@ -61,42 +61,265 @@ export interface ICalendarLabelData {
 }
 /** @hidden */
 export interface ICalendarProps extends IDatetimeProps {
-    cssClass?: string;
-    colors?: MbscCalendarColor[];
+    /** @hidden */
     downIcon?: string;
+    /** @hidden */
     hasPicker?: boolean;
-    height?: number | string;
+    /** @hidden */
     hoverEnd?: number;
+    /** @hidden */
     hoverStart?: number;
-    labels?: MbscCalendarLabel[];
-    marked?: MbscCalendarMarked[];
+    /** @hidden */
     mousewheel?: boolean;
+    /** @hidden */
     nextIconH?: string;
+    /** @hidden */
     nextIconV?: string;
+    /** @hidden */
     prevIconH?: string;
+    /** @hidden */
     prevIconV?: string;
+    /** @hidden */
     rangeStart?: number;
+    /** @hidden */
     rangeEnd?: number;
+    /** @hidden */
     resourcesMap?: {
         [key: number]: MbscResource;
     };
-    showControls?: boolean;
-    showEventTooltip?: boolean;
+    /** @hidden */
     showLabelCount?: boolean;
+    /** @hidden */
     showToday?: boolean;
+    /** @hidden */
     upIcon?: string;
+    /**
+     * Specifies the color for certain dates or date ranges on the calendar.
+     * The color object has the following properties:
+     * - `allDay`: *boolean* - Specifies whether the date you want to color is all day or not.
+     * - `background`: *string* - Background color of the cell, can be any valid CSS color (`'red'`, `'#ff0000'`, `'rgb(255, 0, 0)'`, etc.).
+     * - `cellCssClass`: *string* - CSS class for the day cell. Only applicable for the calendar view.
+     * - `cssClass` *string* - Specifies a custom CSS class for the color.
+     * Useful when customization is needed for the background of cells and time ranges.
+     * Only applicable for the timeline and scheduler views.
+     * - `date`: *Date | string | object* - Date of the calendar day which should be colored.
+     * - `start`: *Date | string | object* - Start of the colored range.
+     * - `end`: *Date, string | object* - End of the colored range.
+     * - `highlight`: *string* - Highlight color of the day, can be any valid CSS color (`'red'`, `'#ff0000'`, `'rgb(255, 0, 0)'`, etc.).
+     * - `recurring`: *string | object* - Recurrence rule for coloring recurring days.
+     * - `recurringException`: *string | object | Array<string | object>* - Exception dates of the recurring rule.
+     * Useful when specific dates need to be skipped from the rule.
+     * - `recurringExceptionRule`: *string | object* - Exception rule of the recurring rule.
+     * Useful when recurring dates need to be skipped from the rule.
+     * - `resource`: *string | number | Array<string | number>* - Specifies the [resource](#opt-resources) ids for the color.
+     * The color will be displayed only in the specified resource.
+     * If there is no resource defined, the color will be displayed in every resource.
+     * - `slot`: *string | number* - Specifies the [slot](#opt-slots) id for the color.
+     * The color will be displayed only in the specified slot.
+     * If there is no slot defined, the color will be displayed in every slot.
+     * - `textColor`: *string* - Specifies the text color of the colored range title.
+     * - `title`: *string* - Text which will be displayed for the colored range. Only applicable for the timeline and scheduler views.
+     *
+     * :::info
+     * The colored range will be considered all-day if:
+     * - the `allDay` property is explicitly set.
+     * - the `start` / `end` properties are not specified, only the `date`.
+     * :::
+     * :::info
+     * The dates can be specified as JavaScript Date objects, ISO 8601 strings, or moment objects.
+     * :::
+     * :::info
+     * The colors can be combined with the [labels](#opt-labels) or [marked](#opt-marked) options.
+     * :::
+     *
+     * ```js
+     * colors: [
+     *   { date: new Date(2020, 2, 23), background: 'pink' },
+     *   { date: new Date(2020, 2, 24), background: 'green' },
+     *   { background: '#ff0000', recurring: { repeat: 'weekly', weekDays: 'SU' } },
+     *   { background: 'yellow', recurring: { repeat: 'weekly', weekDays: 'SA' } }
+     * ]
+     * ```
+     *
+     * @defaultValue undefined
+     * @group Options_calendarview
+     * @group Options_scheduler
+     * @group Options_timeline
+     * @group Properties
+     */
+    colors?: MbscCalendarColor[];
+    /**
+     * Sets the height of the component.
+     *
+     * The height of the calendar view impacts the number of labels that fit into a table cell.
+     * A "show more" label will be displayed for events that don't fit.
+     *
+     * @defaultValue undefined
+     */
+    height?: number | string;
+    /**
+     * Specifies labels for calendar days.
+     * A label object can have the following properties:
+     * - `cellCssClass`: *string* - CSS class for the day cell. Only applicable for the calendar view.
+     * - `color`: *string* - The color of the label, can be any valid CSS color (`'red'`, `'#ff0000'`, `'rgb(255, 0, 0)'`, etc.).
+     * - `date`: *Date | string | object* - Date of the calendar label for single day labels.
+     * - `start`: *Date | string | object* - Start of the calendar label.
+     * - `end`: *Date, string | object* - End of the calendar label.
+     * - `text`: *string* - The text of the label.
+     * - `recurring`: *string | object* - Recurrence rule for recurring labels.
+     * - `recurringException`: *string | object | Array<string | object>* - Exception dates of the recurring rule.
+     * Useful when specific dates need to be skipped from the rule.
+     * - `recurringExceptionRule`: *string | object* - Exception rule of the recurring rule.
+     * Useful when recurring dates need to be skipped from the rule.
+     *
+     * :::info
+     * The dates can be specified as JavaScript Date objects, ISO 8601 strings, or moment objects.
+     * :::
+     * :::info
+     * The labels can be combined with the [colors](#opt-colors) option.
+     * :::
+     *
+     * ```js
+     * labels: [
+     *   {
+     *     start: new Date(2020, 2, 23),
+     *     end: new Date(2020, 2, 24),
+     *     text: 'Conference',
+     *     color: 'red'
+     *   },
+     *   {
+     *     text: 'Christmas',
+     *     recurring: { repeat: 'yearly', month: 12, day: 24 }
+     *   }
+     * ]
+     * ```
+     *
+     * **Default value**: undefined
+     * @group Options_calendarview
+     * @group Properties
+     */
+    labels?: MbscCalendarLabel[];
+    /**
+     * Mark certain dates on the calendar. An array containing dates, or objects with the following properties:
+     * - `cellCssClass`: *string* - CSS class for the day cell. Only applicable for the calendar view.
+     * - `color`: *string* - The color of the mark, can be any valid CSS color (`'red'`, `'#ff0000'`, `'rgb(255, 0, 0)'`, etc.).
+     * - `date`: *Date | string | object* - ate of the day to be marked.
+     * - `start`: *Date | string | object* - Start date of the days to be marked.
+     * - `end`: *Date, string | object* - End date of the days to be marked.
+     * - `markCssClass`: *string* - CSS class for the mark.
+     * - `recurring`: *string | object* - Recurrence rule for recurring marked days.
+     * - `recurringException`: *string | object | Array<string | object>* - Exception dates of the recurring rule.
+     * Useful when specific dates need to be skipped from the rule.
+     * - `recurringExceptionRule`: *string | object* - Exception rule of the recurring rule.
+     * Useful when recurring dates need to be skipped from the rule.
+     *
+     * :::info
+     * The dates can be specified as JavaScript Date objects, ISO 8601 strings, or moment objects.
+     * :::
+     * :::info
+     * The marked days can be combined with the [colors](#opt-colors) option.
+     * :::
+     *
+     * ```js
+     * marked: [
+     *   new Date(2020, 2, 15),
+     *   new Date(2020, 2, 22),
+     *   {
+     *     start: new Date(2020, 2, 23),
+     *     end: new Date(2020, 2, 24),
+     *     color: 'red'
+     *   },
+     *   {
+     *     color: 'green',
+     *     recurring: { repeat: 'yearly', month: 12, day: 24 }
+     *   }
+     * ]
+     * ```
+     *
+     * @defaultValue undefined
+     * @group Options_calendarview
+     * @group Properties
+     */
+    marked?: MbscCalendarMarked[];
+    /**
+     * Show or hide the calendar header controls: the previous and next buttons,
+     * and the current view button together with the year and month picker.
+     *
+     * @defaultValue true
+     */
+    showControls?: boolean;
+    /**
+     * Displays the native tooltip that shows up when hovering over the event.
+     *
+     * @defaultValue true
+     */
+    showEventTooltip?: boolean;
+    /**
+     * Sets the width of the component.
+     *
+     * @defaultValue undefined
+     */
     width?: number | string;
+    /** @hidden */
     dateText?: string;
+    /**
+     * Text for the event word.
+     *
+     * @defaultValue 'event'
+     * @group Localizations
+     * @group Localizations_calendarview
+     */
     eventText?: string;
+    /**
+     * Text for the events word (plural).
+     *
+     * @defaultValue 'events'
+     * @group Localizations
+     * @group Localizations_calendarview
+     */
     eventsText?: string;
-    firstDay?: number;
+    /**
+     * Text for the "more" label on the calendar, when there's not enough space to display all the labels for the day.
+     * The `{count}` inside the string will be replaced with the number of extra labels.
+     * Use the [moreEventsPluralText](#localization-moreEventsPluralText) as well, if the plural form is different.
+     *
+     * @defaultValue '{count} more'
+     * @group Localizations
+     * @group Localizations_calendarview
+     */
     moreEventsText?: string;
+    /**
+     * Text for the "more" label on the calendar, when there's not enough space to display all the labels for the day,
+     * and there are more than one extra labels.
+     * The `{count}` inside the string will be replaced with the number of extra labels.
+     * When not specified, the [moreEventsText](#localization-moreEventsText) option will be used for both plural and singular form.
+     *
+     * @defaultValue undefined
+     * @group Localizations
+     * @group Localizations_calendarview
+     */
     moreEventsPluralText?: string;
+    /**
+     * Text for the next button in the calendar header, used as accessibility label.
+     *
+     * @defaultValue 'Next page'
+     * @group Localizations
+     */
     nextPageText?: string;
+    /**
+     * Text for the previous button in the calendar header, used as accessibility label.
+     *
+     * @defaultValue 'Previous page'
+     * @group Localizations
+     */
     prevPageText?: string;
+    /** @hidden */
     timeText?: string;
+    /** @hidden */
     onDayHoverIn?(args: any, inst: any): void;
+    /** @hidden */
     onDayHoverOut?(args: any, inst: any): void;
+    /** @hidden */
     onResize?(args: any, inst: any): void;
 }
 /** @hidden */
@@ -227,11 +450,17 @@ export interface ILabelDragData {
 }
 /** Common interface for colors, marked and labels */
 export interface ICalendarData {
+    /** Specifies the date of the calendar day. */
     date?: Date | string | object;
+    /** Specifies the start date/time of the calendar days/cells. */
     start?: Date | string | object;
+    /** Specifies the end date/time of the calendar days/cells/ */
     end?: Date | string | object;
+    /** Specifies [recurrence](https://docs.mobiscroll.com/eventcalendar#recurrence) rule for handling recurring days. */
     recurring?: MbscRecurrenceRule | string;
+    /** Specifies [recurring exceptions](https://docs.mobiscroll.com/eventcalendar#recurrence-exceptions) */
     recurringException?: Array<string | object | Date> | string | object | Date;
+    /** Specifies [recurring exceptions rules](https://docs.mobiscroll.com/eventcalendar#recurrence-exceptions) */
     recurringExceptionRule?: MbscRecurrenceRule | string;
     /** Occurrence number in case of recurrence */
     nr?: number;

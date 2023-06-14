@@ -16288,6 +16288,10 @@ $mbsc-windows-dark-colors: map-merge(
     }
   }
 
+  .mbsc-timeline-row-resource-col {
+    overflow: hidden;
+  }
+
   .mbsc-timeline-row-date-col {
     width: 5.5em;
   }

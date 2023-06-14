@@ -1,16 +1,5 @@
-import { BaseComponent, IBaseProps } from '../../base';
-export interface MbscCheckboxOptions extends IBaseProps {
-    checked?: boolean;
-    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light';
-    defaultChecked?: boolean;
-    description?: string;
-    disabled?: boolean;
-    onChange?: any;
-    inputStyle?: 'underline' | 'box' | 'outline';
-    label?: string;
-    modelValue?: boolean;
-    position?: 'start' | 'end';
-}
+import { BaseComponent } from '../../base';
+import { MbscCheckboxOptions } from './checkbox.types.public';
 /** @hidden */
 export interface MbscCheckboxState {
     checked?: boolean;

@@ -1,4 +1,5 @@
-import { CheckboxBase, MbscCheckboxOptions } from './checkbox';
+import { CheckboxBase } from './checkbox';
+import { MbscCheckboxOptions } from './checkbox.types.public';
 import '../../base.scss';
 import '../../shared/form-controls/form-controls.scss';
 import './checkbox.scss';

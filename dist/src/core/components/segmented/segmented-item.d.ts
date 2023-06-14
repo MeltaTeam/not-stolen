@@ -1,17 +1,5 @@
 import { BaseComponent } from '../../base';
-import { MbscButtonOptions } from '../button/button';
-import { MbscSegmentedGroupOptions } from './segmented-group';
-export interface MbscSegmentedOptions extends MbscButtonOptions {
-    checked?: boolean;
-    defaultChecked?: boolean;
-    inputClass?: string;
-    name?: string;
-    select?: 'single' | 'multiple';
-    modelValue?: boolean;
-    value?: any;
-    onChange?: any;
-    rtl?: boolean;
-}
+import { MbscSegmentedGroupOptions, MbscSegmentedOptions } from './segmented.types.public';
 /** @hidden */
 export interface MbscSegmentedState {
     disabled?: boolean;

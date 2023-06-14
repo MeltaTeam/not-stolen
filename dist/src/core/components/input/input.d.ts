@@ -1,44 +1,5 @@
-import { BaseComponent, IBaseProps } from '../../base';
-export interface MbscInputOptions extends IBaseProps {
-    autoComplete?: string;
-    clearIcon?: string;
-    defaultValue?: string;
-    disabled?: boolean;
-    dropdown?: boolean;
-    dropdownIcon?: string;
-    endIcon?: string;
-    endIconSrc?: string;
-    endIconSvg?: string;
-    error?: boolean;
-    errorMessage?: string;
-    hideIcon?: string;
-    hideIconSvg?: string;
-    inputClass?: string;
-    inputStyle?: 'underline' | 'box' | 'outline';
-    label?: string;
-    labelStyle?: 'stacked' | 'inline' | 'floating';
-    modelValue?: any;
-    /** @hidden */
-    notch?: boolean;
-    onChange?: any;
-    onInput?: any;
-    passwordToggle?: boolean;
-    pickerMap?: any;
-    pickerValue?: any;
-    placeholder?: string;
-    readOnly?: boolean;
-    /** @hidden */
-    ripple?: boolean;
-    rows?: number;
-    showIcon?: string;
-    showIconSvg?: string;
-    startIcon?: string;
-    startIconSrc?: string;
-    startIconSvg?: string;
-    tags?: boolean;
-    type?: string;
-    value?: string;
-}
+import { BaseComponent } from '../../base';
+import { MbscInputOptions } from './input.types.public';
 /** @hidden */
 export interface MbscInputState {
     disabled?: boolean;

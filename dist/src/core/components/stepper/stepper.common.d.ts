@@ -1,4 +1,5 @@
-import { MbscStepperOptions, StepperBase } from './stepper';
+import { StepperBase } from './stepper';
+import { MbscStepperOptions } from './stepper.types.public';
 import '../../base.scss';
 import '../../shared/form-controls/form-controls.scss';
 import './stepper.scss';

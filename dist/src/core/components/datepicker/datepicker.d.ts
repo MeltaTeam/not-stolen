@@ -32,16 +32,18 @@ export declare class DatepickerBase extends PickerBase<MbscDatepickerOptions, Mb
     _activeSelect?: 'start' | 'end';
     _controls: any[];
     _controlsClass?: string;
-    /** Whether of not to show the rangepicker start and end selection controls */
+    /** Whether of not to show the range picker start and end selection controls */
     _renderControls?: boolean;
     _renderTabs?: boolean;
     _selectedTime?: Date;
     _tempValueRep: IDValueRepresentation;
-    /** @hidden
+    /**
+     * @hidden
      * The formatted start value that appears on the start/end selection control
      */
     _tempStartText?: string;
-    /** @hidden
+    /**
+     * @hidden
      * The formatted end value that appears on the start/end selection control
      */
     _tempEndText?: string;
@@ -57,15 +59,18 @@ export declare class DatepickerBase extends PickerBase<MbscDatepickerOptions, Mb
     private _hasTimegrid;
     private _max?;
     private _min?;
-    /** Holds the minimum time that can be selected for each day.
+    /**
+     * Holds the minimum time that can be selected for each day.
      * It's a Date object that we use only the time part of.
      */
     private _minTime?;
-    /** Holds the maximum time that can be selected for each day.
+    /**
+     * Holds the maximum time that can be selected for each day.
      * It's a Date object that we use only the time part of.
      */
     private _maxTime?;
-    /** We pass this date to the calendar, when we want to navigate it to a certain date.
+    /**
+     * We pass this date to the calendar, when we want to navigate it to a certain date.
      * The calendar takes this into account only once every time the _active value changes.
      * Otherwise when navigated from UI, this value is disregarded.
      */
@@ -75,7 +80,8 @@ export declare class DatepickerBase extends PickerBase<MbscDatepickerOptions, Mb
     private _maxLimited?;
     /** Holds the limited min option which is manipulated in the case of range selection on the datetime control based on the start date */
     private _minLimited?;
-    /** Holds the limited min option which is passed to the time control
+    /**
+     * Holds the limited min option which is passed to the time control
      * It's required because in the case of the calendar the min setting should not be limited, but
      * for the time control it does. So in case when there is a time and a calendar, the two passed options differ.
      */
@@ -83,7 +89,8 @@ export declare class DatepickerBase extends PickerBase<MbscDatepickerOptions, Mb
     private _nextInvalid?;
     /** Holds the previously selected start date as a timestamp in case of the range picker */
     private _prevStart?;
-    /** Holds the last selected date in the case of the calendar
+    /**
+     * Holds the last selected date in the case of the calendar
      * NOTE: It's needed in the case of the range picker, when both of the start and end dates are selected, and we change the end selection
      * we can't decide which date was clicked otherwise, because the calendar change only knows the selected dates. So if we click the same
      * day (start or end), we can't tell if the start or the end date was clicked.
@@ -94,7 +101,8 @@ export declare class DatepickerBase extends PickerBase<MbscDatepickerOptions, Mb
     private _resetStartInput?;
     private _resetEndInput?;
     private _shouldInitInputs?;
-    /** In the case of the rangepicker it specifies if we are making a new selection.
+    /**
+     * In the case of the range picker it specifies if we are making a new selection.
      * When true, it means we need to cycle the active selection. Otherwise we refine the
      * selection and we don't have to cycle it.
      * Generally, we make a new selection when we open the picker (doesn't matter if there was
@@ -109,19 +117,29 @@ export declare class DatepickerBase extends PickerBase<MbscDatepickerOptions, Mb
     private _clearSaved?;
     private _prevStateValue?;
     private _remote;
+    /** @hidden */
     _onActiveChange: (ev: any) => void;
+    /** @hidden */
     _onResize: (ev: any) => void;
+    /** @hidden */
     _onDayHoverIn: ({ date, hidden }: {
         date: Date;
         hidden: boolean;
     }) => void;
+    /** @hidden */
     _onDayHoverOut: ({ date }: {
         date: Date;
     }) => void;
-    /** Saves the last clicked date on the calendar */
+    /**
+     * @hidden
+     * Saves the last clicked date on the calendar
+     */
     _onCellClick: (args: any) => void;
+    /** @hidden */
     _onCalendarChange: (ev: any) => void;
+    /** @hidden */
     _onDatetimeChange: (ev: any) => void;
+    /** @hidden */
     _onTimePartChange: (ev: any) => void;
     /** @hidden */
     _changeActiveTab: (ev: any) => void;
@@ -142,14 +160,19 @@ export declare class DatepickerBase extends PickerBase<MbscDatepickerOptions, Mb
      */
     setTempVal(value: null | DateType | Array<DateType | null>): void;
     /**
-     * Navigates the calendar to the specified date.
-     * @param date
+     * Display a specific month on the calendar without setting the date.
+     * @param date - Date to navigate to. Can be a Date object, ISO8601 date string, or moment object.
      */
     navigate(date: DateType): void;
+    /** @hidden */
     _clearEnd: () => void;
+    /** @hidden */
     _clearStart: () => void;
+    /** @hidden */
     _shouldValidate(s: MbscDatepickerOptions, prevS: MbscDatepickerOptions): boolean;
+    /** @hidden */
     _valueEquals(v1: any, v2: any): boolean;
+    /** @hidden */
     setVal(value: any): void;
     protected _init(): void;
     protected _render(s: MbscDatepickerOptions, state: MbscDatepickerState): void;
@@ -185,10 +208,10 @@ export declare class DatepickerBase extends PickerBase<MbscDatepickerOptions, Mb
     /**
      * Checks if the temp selection is NOT ready yet for set
      * In the case of the range picker the selection is not ready when
-     *  - no value is selected OR
-     *  - only one value is selected and the labels are shown
-     *    if the labels are not shown, we allow the selection in the case of date control or the calendar together with
-     *    time - there's no way to switch to second value otherwise
+     * - no value is selected OR
+     * - only one value is selected and the labels are shown
+     * If the labels are not shown, we allow the selection in the case of date control or the calendar together with
+     * time - there's no way to switch to second value otherwise.
      */
     private _selectionNotReady;
     /** Sets the _activeSelect property and triggers the 'onActiveDateChange' event if the active select changed */

@@ -1,30 +1,6 @@
 {
   "name": "@mobiscroll/react",
-  "version": "5.24.1",
-  "description": "React UI library for progressive web and hybrid apps",
-  "license": "SEE LICENSE IN LICENSE",
-  "keywords": [
-    "mobile web",
-    "hybrid apps",
-    "javascript",
-    "mobiscroll",
-    "javascript library",
-    "react",
-    "component library",
-    "ui components",
-    "ui kit"
-  ],
-  "author": {
-    "name": "Mobiscroll",
-    "url": "https://mobiscroll.com/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/acidb/mobiscroll.git"
-  },
-  "bugs": {
-    "url": "https://github.com/acidb/mobiscroll/issues"
-  },
+  "version": "5.25.0",
   "main": "dist/js/mobiscroll.react.min.js",
   "typings": "dist/src/react/bundle-remote.d.ts",
   "style": "dist/css/mobiscroll.min.css",

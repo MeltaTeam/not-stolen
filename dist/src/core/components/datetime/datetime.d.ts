@@ -1,17 +1,66 @@
 import { BaseComponent } from '../../base';
 import { DateType, IDatetimeProps } from '../../util/datetime';
-import { IScrollerProps, MbscScrollerWheel, ScrollerBase } from '../scroller/scroller';
+import { ScrollerBase } from '../scroller/scroller';
+import { IScrollerProps, MbscScrollerWheel } from '../scroller/scroller.types';
 export interface MbscDatetimeOptions extends IDatetimeProps, IScrollerProps {
+    /** @hidden */
     dateDisplay?: string;
+    /** @hidden */
     dateWheelFormat?: string;
-    dateWheels?: string;
+    /** @hidden */
     defaultValue?: DateType;
+    /** @hidden */
     mode?: 'date' | 'datetime' | 'time';
+    /**
+     * Step for the hours scroll wheel. Also, sets the hours step for the timegrid.
+     * @defaultValue 1
+     */
     stepHour?: number;
+    /**
+     * Step for the minutes scroll wheel. Also, sets the minutes step for the timegrid.
+     * @defaultValue 1
+     */
     stepMinute?: number;
+    /**
+     * Step for the seconds scroll wheel. Also, sets the seconds step for the timegrid.
+     * @defaultValue 1
+     */
     stepSecond?: number;
+    /**
+     * Display order and formatting for month/day/year wheels. Characters have the same meaning as in the
+     * [dateFormat](#localization-dateFormat) option. The options also controls if a specific wheel should appear or not,
+     * e.g. use `'MMMMYYYY'` to display month and year wheels only, `'MMDDD DDYYYY'` to display both day of week and date on the day wheel.
+     *
+     * If not specified, the order of the wheels will be taken from the [dateFormat](#localization-dateFormat) option, and the
+     * formatting will be defined by the [theme](#opt-theme).
+     *
+     * To display the whole date on one wheel, the format of the date should be specified between `|` characters:
+     *
+     * ```js
+     * dateWheels: '|DDD MMM D|' // Will produce 'Sun Sep 9'
+     * ```
+     *
+     * @defaultValue undefined
+     * @group Localizations
+     */
+    dateWheels?: string;
+    /**
+     * Display order and formatting of the time wheels. Characters have the same meaning as in the
+     * [timeFormat](#localization-timeFormat) option.
+     *
+     * If not specified, the order of the wheels will be taken from the [timeFormat](#localization-timeFormat) option,
+     * and the formatting will be defined by the theme.
+     *
+     * To display the whole time on one wheel, the format of the time should be specified between `|` characters:
+     *
+     * ```js
+     * timeWheels: '|h:mm A|' // Will produce '9:12 AM'
+     * ```
+     *
+     * @defaultValue undefined
+     * @group Localizations
+     */
     timeWheels?: string;
-    nowText?: string;
 }
 /** @hidden */
 export interface MbscDatetimeState {

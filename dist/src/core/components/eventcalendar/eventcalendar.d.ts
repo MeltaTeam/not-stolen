@@ -232,52 +232,89 @@ export declare class EventcalendarBase extends BaseComponent<MbscEventcalendarOp
     private _viewDate?;
     private _remote;
     /**
-     * Sets the events for the calendar.
-     * @param events Array containing the events.
+     * @hidden
+     * Adds one or more events to the calendar
+     *
+     * @param events - Object or Array containing the events.
+     * @returns - An array containing the list of IDs generated for the events.
      */
     addEvent(events: MbscCalendarEvent | MbscCalendarEvent[]): string[];
     /**
-     * Returns the events between start/end.
+     * Returns the [events](#opt-data) between two dates. If `start` and `end` are not specified,
+     * it defaults to the start and end days of the current view.
+     * If `end` is not specified, it defaults to start date + 1 day.
+     *
+     * @param start - Start date of the specified interval.
+     * @param end  - End date of the specified interval.
+     * @returns - An array containing the event objects.
      */
     getEvents(start?: DateType, end?: DateType): MbscCalendarEvent[];
     /**
-     * Returns the invalids between start/end.
+     * Returns the [invalids](#opt-invalid) between two dates. If `start` and `end` are not specified,
+     * it defaults to the start and end days of the current view.
+     * If `end` is not specified, it defaults to start date + 1 day.
+     *
+     * @param start - Start date of the specified interval.
+     * @param end  - End date of the specified interval.
+     * @returns - An array containing the invalid objects.
      */
     getInvalids(start?: DateType, end?: DateType): MbscCalendarEvent[];
     /**
+     * @hidden
      * Returns the selected events.
+     *
+     * @returns - An array containing the selected events.
+     *
+     * The selected events can be set with the [setSelectedEvents](#method-setSelectedEvents) method.
+     * Multiple event selection can be turned on with the [selectMultipleEvents](#opt-selectMultipleEvents) option.
      */
     getSelectedEvents(): MbscCalendarEvent[];
     /**
-     * Sets the events for the calendar.
-     * @param events Array containing the events.
+     * @hidden
+     * Set the events for the calendar. The previous events will be overwritten.
+     * Returns the list of IDs generated for the events.
+     *
+     * @param events - An array containing the events.
+     * @returns - An array containing the event IDs.
      */
     setEvents(events: MbscCalendarEvent[]): string[];
     /**
-     * Set the selected events.
+     * @hidden
+     * Sets the selected events.
+     *
+     * @param selectedEvents - An array containing the selected events.
+     *
+     * The selected events are returned by the [getSelectedEvents](#method-getSelectedEvents) method.
+     * Multiple event selection can be turned on with the [selectMultipleEvents](#opt-selectMultipleEvents) option.
      */
     setSelectedEvents(selectedEvents: MbscCalendarEvent[]): void;
     /**
-     * Removes one or more events from the calendar.
-     * @param events
+     * @hidden
+     * Removes one or more events from the event list based on IDs. For events without IDs, the IDs are generated internally.
+     * The generated ids are returned by the [addEvent](#method-addEvent) or [getEvents](#method-getEvents) methods.
+     *
+     * @param events - An array containing IDs or the event objects to be deleted.
      */
     removeEvent(events: string | number | MbscCalendarEvent | string[] | number[] | MbscCalendarEvent[]): void;
     /**
-     * Navigates the calendar to the specified event.
-     * @param event
+     * Navigates to the specified event on calendar.
+     * @param event - The event object. The `id`, `start` and `resource`
+     * (in case if resources are used in timeline or schedule views) properties must be present in the object.
      */
     navigateToEvent(event: MbscCalendarEvent): void;
     /**
-     * Navigates the calendar to the specified date.
-     * @param date
+     * Navigates to the specified date on the calendar.
+     * @param date - Date to navigate to.
      */
     navigate(date: DateType, animate?: boolean): void;
     /**
-     * Updates one or more events in the calendar.
-     * @param events
+     * @hidden
+     * Updates one or more events in the event calendar.
+     * @param events - The event or events to update.
      */
     updateEvent(events: MbscCalendarEvent | MbscCalendarEvent[]): void;
     /**
+     * @hidden
      * Refreshes the view.
      */
     refresh(): void;

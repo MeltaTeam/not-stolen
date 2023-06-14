@@ -1,20 +1,7 @@
-import { BaseComponent, IBaseEvent } from '../../base';
-import { IScrollerProps, IScrollerValidateArgs, IWheelMoveArgs, MbscScrollerWheel, ScrollerBase } from '../scroller/scroller';
-export interface MbscSelectOnFilterEvent extends IBaseEvent {
-    filterText: string;
-}
-export interface MbscSelectOptions extends IScrollerProps {
-    clearIcon?: string;
-    data?: any[];
-    filter?: boolean;
-    showGroupWheel?: boolean;
-    selectMultiple?: boolean;
-    inputElement?: HTMLElement;
-    selectElement?: HTMLSelectElement;
-    filterPlaceholderText?: string;
-    filterEmptyText?: string;
-    onFilter?(ev: MbscSelectOnFilterEvent, inst: any): boolean;
-}
+import { BaseComponent } from '../../base';
+import { ScrollerBase } from '../scroller/scroller';
+import { IScrollerValidateArgs, IWheelMoveArgs, MbscScrollerWheel } from '../scroller/scroller.types';
+import { MbscSelectOptions } from './select.types.public';
 interface ISelectData {
     group?: string;
     text: string;
@@ -96,27 +83,68 @@ export declare class SelectBase extends BaseComponent<MbscSelectOptions, any> {
      * Keys are the labels and values are the value of the option items
      */
     private _reMap;
-    /** Event handler for the filter input change */
+    /** @hidden */
     _onFilterChange: (e: any) => void;
-    /** Event handler for the clear filter input button */
+    /** @hidden */
     _onFilterClear: () => void;
+    /** @hidden */
+    _onResize: (args: any) => void;
+    /** @hidden */
+    _onChange: (args: any) => void;
+    /** @hidden */
+    _onClose: (args: any) => void;
+    /** @hidden */
+    _onWheelMove: ({ wheelIndex, selection, dataItem }: IWheelMoveArgs) => any;
+    /** @hidden */
     _shouldValidate: (s: MbscSelectOptions, prevS: MbscSelectOptions) => boolean;
+    /** @hidden */
     _writeValue: (elm: HTMLInputElement, text: string, value: any) => boolean;
+    /** @hidden */
     _change(value: any): void;
-    /** Reloads option elements from the DOM, when
-     * the Select Component is initialized on a select element
+    /**
+     * @hidden
+     * Reloads option elements from the DOM, when
+     * the Select component is initialized on a html select element.
+     *
+     * When changing the option elements dynamically in the DOM, this method should be called after the change,
+     * so the select is updated properly with the new data.
      */
     reloadOptionElements(): void;
+    /**
+     * @hidden
+     * Sets the picker value and also writes it to the input.
+     * @param value - The value to set.
+     */
     setVal(value: any): void;
+    /**
+     * @hidden
+     * Returns the selected value of the picker.
+     */
     getVal(): any;
+    /**
+     * Sets the temporary value to be selected on the picker.
+     * The value will be committed when the user hits the set button.
+     * @param value - The value to set.
+     */
     setTempVal(value: any): void;
+    /**
+     * Returns the temporary value selected on the picker.
+     */
     getTempVal(): any;
+    /**
+     * @hidden
+     * Opens the component.
+     */
     open(): void;
+    /**
+     * @hidden
+     * Closes the component.
+     */
     close(): void;
-    _onResize: (args: any) => void;
-    _onChange: (args: any) => void;
+    /** @hidden */
     _format: (valueRep: any[]) => string;
     /**
+     * @hidden
      * Parses the value into a value representation
      * The select passes this function to the scroller, so the value
      * representation is basically an array of values. Each index in the array represents
@@ -125,16 +153,19 @@ export declare class SelectBase extends BaseComponent<MbscSelectOptions, any> {
      * @returns The value representation of the scroller. See above description for more info.
      */
     _parse: (value: any) => any[];
+    /** @hidden */
     _get: (valueRep: any[]) => any;
+    /** @hidden */
     _valueEquals: (v1: any, v2: any) => boolean;
-    _onWheelMove: ({ wheelIndex, selection, dataItem }: IWheelMoveArgs) => any;
+    /** @hidden */
     _validate: ({ values, direction, wheels, index }: IScrollerValidateArgs) => {
         disabled?: object[];
         valid?: any[];
         indexes?: any[];
     };
-    _onClose: (args: any) => void;
+    /** @hidden */
     _setScroller: (scroller: any) => void;
+    /** @hidden */
     _setInput: (input: any) => void;
     /**
      * Saves a map (value-label) from the selected values passed to it
@@ -155,7 +186,7 @@ export declare class SelectBase extends BaseComponent<MbscSelectOptions, any> {
     private _proxy;
     private _createWheels;
     /**
-     * Sets the optionlist from querying the <option> elements
+     * Sets the option list from querying the <option> elements
      */
     private _setOptionsFromElm;
     /**

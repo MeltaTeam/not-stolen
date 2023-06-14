@@ -1,4 +1,5 @@
-import { MbscSwitchOptions, SwitchBase } from './switch';
+import { SwitchBase } from './switch';
+import { MbscSwitchOptions } from './switch.types.public';
 import '../../base.scss';
 import '../../shared/form-controls/form-controls.scss';
 import './switch.scss';
